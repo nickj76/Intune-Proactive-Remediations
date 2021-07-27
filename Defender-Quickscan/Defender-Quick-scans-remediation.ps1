@@ -1,0 +1,1 @@
+Start-MpScan -ScanType QuickScan
