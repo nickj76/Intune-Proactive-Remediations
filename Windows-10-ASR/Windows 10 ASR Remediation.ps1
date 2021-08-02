@@ -15,7 +15,7 @@
 
 try
     {
-    Get-ScheduledTask | ? {$_.TaskName -eq ‘PushLaunch’} | Start-ScheduledTask
+    Get-ScheduledTask | Where-Object {$_.TaskName -eq ‘PushLaunch’} | Start-ScheduledTask
     exit 0
     }
 catch
