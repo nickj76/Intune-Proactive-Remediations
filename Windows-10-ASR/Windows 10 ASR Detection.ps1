@@ -3,7 +3,14 @@
   Previous script was failing and was not correctly going into remediation
   Using script here: https://github.com/anthonws/MDATP_PoSh_Scripts/blob/master/ASR/ASR_Analyzer_v2.2.ps1
   Logic: If there are not 16 rules in total go straight into remediation
+  
+  Script has been updated to create a logfile on the machine
+  This logfile can then be pulled via Live response within the M365 Defender portal assuming it is on without resorting to Diagnostics
 #>
+
+
+#VARIABLES
+
 
 $RulesIds = Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids
 $RulesActions = Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Actions
@@ -18,6 +25,68 @@ $TotalNotConfigured = 0
 $TotalAudit = 0
 $TotalBlock = 0
 
+
+#LOG NAME
+
+$LogName = "C:\Temp\ASR-Verification.Log"
+
+
+Function Tee-Log 
+    {
+    param([Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+            $Input,
+          [Parameter(Mandatory = $true)]
+            $FilePath,
+        [switch]$Silent)
+    if($Silent)
+        {
+        $Input | Out-File -FilePath $LogName -Append
+        } 
+    else 
+        {
+        $Input | Tee-Object -FilePath $LogName -Append
+        }
+    }
+
+
+If (! (Test-Path $LogName))
+    {
+    # If path does not exists it should be created
+    try{
+        $tmpLogPath = $LogName
+        if ($tmpLogPath -NotMatch '[\\\/]$') 
+            { 
+            $tmpLogName = ($tmpLogPath -split '[\\\/]')[-1]
+            $tmpLogPath = $tmpLogPath -replace "$tmpLogName`$"
+            } 
+         else 
+            {
+            $tmpLogName = 'ASR-Verification.Log'
+            }
+
+        if (! (Test-Path $tmpLogPath)) 
+            {
+            New-Item -Path $tmpLogPath -Force -ItemType Directory | Out-Null
+            }
+            New-Item -Path "$tmpLogPath\$tmpLogName" -Force -ItemType File | Out-Null
+
+        $LogName = "$tmpLogPath\$tmpLogName"
+        } 
+     catch 
+        {
+        Throw "Log file '$LogName' does not exists and cannot be created. Error: $_"
+        }
+    }
+
+
+#write the following values to the log file as a seperation 
+
+'*********************************************************************' | Tee-Log -FilePath $LogName -Silent:$Passthru
+"$(get-date -format u)  :  INFO  : ComputerName: $($Env:ComputerName)" | Tee-Log -FilePath $LogName -Silent:$Passthru
+
+
+
+
 ForEach ($i in $RulesActions)
     {
     If ($RulesActions[$counter] -eq 0)
@@ -29,14 +98,13 @@ ForEach ($i in $RulesActions)
     $counter++
     }
 
-Write-Host 
-Write-Host ====================================== ASR Summary ======================================
+#Write to file
 
-Write-Host "=> There's"($RulesIds).Count"rules configured"
-Write-Host "=>"$TotalNotConfigured "in Disabled Mode **" $TotalAudit "in Audit Mode **" $TotalBlock "in Block Mode"
-
-Write-Host 
-Write-Host ====================================== ASR Rules ======================================
+"====================================== ASR Summary ======================================" | Tee-Log -FilePath $LogName -Silent:$Passthru
+"=> There's $(($RulesIds).Count) rules configured" | Tee-Log -FilePath $LogName -Silent:$Passthru
+"=> $TotalNotConfigured in Disabled Mode ** $TotalAudit in Audit Mode ** $TotalBlock in Block Mode" | Tee-Log -FilePath $LogName -Silent:$Passthru
+"" | Tee-Log -FilePath $LogName -Silent:$Passthru
+"====================================== ASR Rules ======================================" | Tee-Log -FilePath $LogName -Silent:$Passthru
 
 $counter = 0
 
@@ -59,12 +127,15 @@ ForEach ($j in $RulesIds)
     ElseIf ($RulesIdsArray[$counter] -eq "b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4"){$RuleName = "Block untrusted and unsigned processes that run from USB"}
     ElseIf ($RulesIdsArray[$counter] -eq "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"){$RuleName = "Block Win32 API calls from Office macro"}
     ElseIf ($RulesIdsArray[$counter] -eq "c1db55ab-c21a-4637-bb3f-a12568109d35"){$RuleName = "Use advanced protection against ransomware"}
+
     ## Check the Action type
     If ($RulesActions[$counter] -eq 0){$RuleAction = "Disabled"}
     ElseIf ($RulesActions[$counter] -eq 1){$RuleAction = "Block"}
     ElseIf ($RulesActions[$counter] -eq 2){$RuleAction = "Audit"}
+
     ## Output Rule Id, Name and Action
-    Write-Host "=>" $RulesIdsArray[$counter] " **" $RuleName "**" "Action:"$RuleAction
+
+    "=> $($RulesIdsArray[$counter])  ** $RuleName ** Action:$RuleAction " | Tee-Log -FilePath $LogName -Silent:$Passthru
     $counter++
 
     }
@@ -73,14 +144,12 @@ try{
     $Total=$RulesIds.Count
     If ($Total -eq 16 -And $TotalNotConfigured -eq 0)
         {
-        Write-Output "ASR Rules are compliant"
-        #Write-Output $ASRSettingActual
+        "ASR Rules are compliant" | Tee-Log -FilePath $LogName -Silent:$Passthru
         exit 0
         }
      }
 catch
     {
-    Write-Output "ASR Rules are not compliant"
-    #Write-Output $ASRSettingActual
+    "ASR Rules are not compliant" | Tee-Log -FilePath $LogName -Silent:$Passthru
     exit 1
     }
