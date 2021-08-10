@@ -219,7 +219,6 @@ function Display-ToastNotification
 			Write-Output "DisplayName could not be obtained, it will be blank in the Toast"
 		}
 		
-		##$CustomHello = "Device Health Issue Detected"
 		
 		#Load Assemblies
 		[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
