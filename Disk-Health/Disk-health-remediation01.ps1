@@ -24,7 +24,7 @@ $ToastTitle = "Please note that your hard drive is currently operating outside o
 $Signature = "Monitored by Proactive Remediations"
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"
-$SnoozeTitle = "Snooze"
+#$SnoozeTitle = "Snooze"
 
 #ToastDuration: Short = 7s, Long = 25s
 $ToastDuration = "long"
