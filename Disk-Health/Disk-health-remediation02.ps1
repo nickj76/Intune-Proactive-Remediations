@@ -1,12 +1,12 @@
 <# 
 .SYNOPSIS
-   Simple Toast Notification Script 
+   Disk Health Simple Toast Notification Script. 
 
 .DESCRIPTION
-   Simple Toast Notification Script that uses base64 to encode the heroimage
+   Disk Health Simple Toast Notification Script used as a proactive remediation.
 
 .EXAMPLE
-   PS C:\> .\install-wrapper-script.ps1
+   PS C:\> .\Disk-health-remediation02.ps1
    Save the file to your hard drive with a .PS1 extention and run the file from an elavated PowerShell prompt.
 
 .NOTES

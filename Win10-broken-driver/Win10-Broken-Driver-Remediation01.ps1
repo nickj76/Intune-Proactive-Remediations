@@ -1,12 +1,12 @@
 <# 
 .SYNOPSIS
-   Simple Toast Notification Script 
+   Windows 10 Broken Driver Simple Toast Notification Script. 
 
 .DESCRIPTION
-   Simple Toast Notification Script that uses base64 to encode the heroimage
+   Windows 10 Broken Driver Simple Toast Notification Script used as a proactive remediation.
 
 .EXAMPLE
-   PS C:\> .\install-wrapper-script.ps1
+   PS C:\> .\Win10-Broken-Driver-Remediation01.ps1
    Save the file to your hard drive with a .PS1 extention and run the file from an elavated PowerShell prompt.
 
 .NOTES
