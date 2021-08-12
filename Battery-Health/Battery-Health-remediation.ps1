@@ -32,8 +32,8 @@ Param
 
 #Create Toast Variables
 $HeaderText = "Warning......Device Health Issue Detected."
-$CustomHello = "Battery Replacement Required."
-$ToastTitle = "Your device battery is currently operating outside of manufacturers specifications, It is recommended that your battery is replaced as soon as possible. Please contact the IT service desk and request a battery replacement."
+$CustomHello = "Warning: Battery Replacement Required."
+$ToastTitle = "Your device battery is currently operating outside of manufacturer specifications, it is recommended that your battery is replaced as soon as possible. Please contact the IT service desk and request a battery replacement."
 $Signature = "IT Services, University of Surrey."
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"
