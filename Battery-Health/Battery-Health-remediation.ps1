@@ -12,13 +12,14 @@
 
 .NOTES
     Filename: battery-health-remediation.ps1
-    Version: 1.2
+    Version: 1.3
     
     Version history:
-	1.2	  -   Incorporated Heroimage as base64 code and removed linking images and downloading of images from script	
-    1.1   -   Added links to required images
-    1.0.1 -   Add Synopsis, Description, Paramenter, notes etc
-    1.0   -   Script created
+	1.3   -   Completed converting images to base64 code meaning everything is contained within the script.
+	1.2	  -   Incorporated Heroimage as base64 code and removed linking images and downloading of images from script.	
+    1.1   -   Added links to required images.
+    1.0.1 -   Add Synopsis, Description, Paramenter, notes etc.
+    1.0   -   Script created.
 
 #>
 
