@@ -36,7 +36,7 @@ Param
 #Create Toast Variables
 $HeaderText = "Device Health Issue Detected."
 $CustomHello = "Warning: Low Disk Space detected."
-$ToastTitle = "Your computer is running low on disk space, this is a potential security concern as we are unable to apply further updates to your computer. Please free up space and reach out to the Service Desk if you require any assistance."
+$ToastTitle = "Your computer is running low on disk space, this is a potential security concern as we are unable to apply further updates to your computer. Please free up space or reach out to the Service Desk if you require any assistance."
 $Signature = "IT Services, University of Surrey."
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"

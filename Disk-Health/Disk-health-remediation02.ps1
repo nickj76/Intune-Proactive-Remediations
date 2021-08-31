@@ -36,7 +36,7 @@ Param
 #Create Toast Variables
 $HeaderText = "Device Health Issue Detected."
 $CustomHello = "Warning: Disk Health Issue Detected."
-$ToastTitle = "Please note that your hard drive is currently operating outside of healthy parameters. Please contact the IT service desk to arrange a replacement."
+$ToastTitle = "Please note that your hard drive is currently operating outside of healthy parameters. Please contact the IT Service Desk to arrange a replacement."
 $Signature = "IT Services, University of Surrey."
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"
