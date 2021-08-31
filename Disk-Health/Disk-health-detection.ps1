@@ -1,11 +1,6 @@
 <#	
 	.NOTES
-	===========================================================================
-	 Created on:   	21/04/2021 11:00 AM
-	 Created by:   	Maurice Daly
-	 Organization: 	CloudWay
-	 Filename:     	Invoke-DiskHealthCheck.ps1
-	===========================================================================
+
 	.DESCRIPTION
 		Monitors WMI values for hard disk health, helping you predict or detect
 		anomalies and be preactive about hard disk replacement.

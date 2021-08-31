@@ -19,6 +19,10 @@
     1.0   -   Script created.
 
 	Parts of this script thanks to Maurice Daly / Ben Whitmore.
+
+.NOTES
+	Based on code https://www.systanddeploy.com/2020/10/endpoint-analytics-proactive.html
+	This code basically notifies the user that there is a issue but nothing more but its awesome.
 	
 .FUNCTIONALITY
    PowerShell v3+
