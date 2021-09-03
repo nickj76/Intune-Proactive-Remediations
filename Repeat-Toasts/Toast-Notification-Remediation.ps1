@@ -1,8 +1,28 @@
 <#
-	.DESCRIPTION
-		Notify the logged on user of a pending Windows Updates Installation
-        Adding multiple times to the $ToastTimes array will pop the toast at regular intervals
+.SYNOPSIS
+    Display Repeated Toast Notifications in a single day 
+
+.DESCRIPTION
+	Notify the logged on user of a pending Windows Updates Installation
+    
+    
+.PARAMETER Config
+    Change #Toast Message as appropriate to meet requirements.
+    Adding multiple times to the $ToastTimes array will pop the toast at regular intervals.
+
+.NOTES
+    Filename: Toast-Notification-Remediation.ps1
+    Version: 1.4
+    
+    Version history:
+	1.3   -   Completed converting images to base64 code meaning everything is contained within the script.
+	1.2	  -   Incorporated Heroimage as base64 code and removed linking images and downloading of images from script.	
+    1.1   -   Added links to required images.
+    1.0.1 -   Add Synopsis, Description, Paramenter, notes etc.
+    1.0   -   Script created.
+
 #>
+
 
 Param
 (
