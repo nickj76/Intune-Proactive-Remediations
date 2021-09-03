@@ -1,3 +1,23 @@
+<#
+.SYNOPSIS
+    Display Repeated Toast Notifications in a single day 
+
+.DESCRIPTION
+	Notify the logged on user of a pending Windows Updates Installation
+    
+    
+.PARAMETER Config
+    Enter the required date into $TargetDate array that you want the toast notification to display .
+
+.NOTES
+    Filename: Toast-Notification-Detection.ps1
+    Version: 1.2
+    
+    Version history:
+    1.0.1 -   Add Synopsis, Description, Paramenter, notes etc.
+    1.0   -   Script created.
+
+#>
 $Path = "HKLM:\Software\!ProactiveRemediations"
 $Name = "20H2NotificationSchTaskCreated"
 $Value = 1
