@@ -38,6 +38,7 @@ $ToastTimes = @("15:00", "16:00", "17:00")
 #Toast Message
 $ToastTitle = "an Important Update is Scheduled"
 $ToastText = "You MUST leave your computer on after 17:00 today. Failure to do so will result in a delay accessing your computer tomorrow"
+$Signature = "IT Services, University of Surrey."
 
 #Toast Images
 
