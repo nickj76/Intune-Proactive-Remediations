@@ -36,10 +36,6 @@ $LogoImage = "$env:TEMP\LogoImage.png"
 
 $Uptime= get-computerinfo | Select-Object OSUptime 
 
-#Fetching images from uri
-#Invoke-WebRequest -Uri $LogoImageUri -OutFile $LogoImage
-#Invoke-WebRequest -Uri $HeroImageUri -OutFile $HeroImage
-
 #Defining the Toast notification settings
 #ToastNotification Settings
 $Scenario = 'reminder' # <!-- Possible values are: reminder | short | long -->
