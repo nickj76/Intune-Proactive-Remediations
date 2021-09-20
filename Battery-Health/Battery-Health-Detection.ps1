@@ -28,7 +28,7 @@ function CheckBatteryHealth {
 		[string]$SerialNumber = (Get-WmiObject win32_bios).SerialNumber
 		
 		# Maximum Acceptable Health Perentage
-		$MinHealth = "40"
+		$MinHealth = "25"
 
         # Multiple Battery handling
         $BatteryInstances = Get-WmiObject -Namespace "ROOT\WMI" -Class "BatteryStatus" | Select-Object -ExpandProperty InstanceName
@@ -41,7 +41,7 @@ function CheckBatteryHealth {
             $BatteryFullCharge = Get-WmiObject -Namespace "ROOT\WMI" -Class "BatteryFullChargedCapacity" | Where-Object -Property InstanceName -EQ $BatteryInstance | Select-Object -ExpandProperty FullChargedCapacity
 
             # Fall back WMI class for Microsoft Surface devices
-            if ($BatteryDesignSpec -eq $null -or $BatteryFullCharge -eq $null -and ((Get-WmiObject -Class Win32_BIOS | Select-Object -ExpandProperty Manufacturer) -match "Microsoft")) {
+            if ($null -eq $BatteryDesignSpec -or $null -eq $BatteryFullCharge -and ((Get-WmiObject -Class Win32_BIOS | Select-Object -ExpandProperty Manufacturer) -match "Microsoft")) {
 	
                 # Attempt to call WMI provider
 	            if (Get-WmiObject -Class MSBatteryClass -Namespace "ROOT\WMI") {
