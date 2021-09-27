@@ -1,6 +1,7 @@
 #region Print servers
 $printServers = @(
     "printservice.surrey.ac.uk"
+    "WinPrint.surrey.ac.uk"
 )
 #endregion
 #region PnP retrictions
