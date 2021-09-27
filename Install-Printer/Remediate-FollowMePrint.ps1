@@ -23,8 +23,8 @@ Function Set-LocalPrinters {
         }
         else {
             Write-Host "Installing $printerPath" -ForegroundColor Green
-            & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\sv-SE\prnmngr.vbs -ac -p $printerPath
-            & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\sv-SE\prnmngr.vbs -t -p $printerPath
+            & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath
+            & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -t -p $printerPath
             if (Get-Printer -Name "$printerPath" -ErrorAction SilentlyContinue) {
                 Write-Host "$printerPath successfully installed.."
             }
