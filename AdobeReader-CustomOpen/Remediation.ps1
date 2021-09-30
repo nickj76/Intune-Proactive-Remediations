@@ -18,4 +18,14 @@ $Name1 = "bToggleCustomOpenExperience"
 $Type1 = "DWORD"
 $Value1 = "1"
 
-Set-ItemProperty -Path $Path1 -Name $Name1 -Type $Type1 -Value $Value1
+IF(!(Test-Path $Path1))
+
+{
+
+New-Item -Path $Path1 -Force | Out-Null
+
+Set-ItemProperty -Path $Path1 -Name $Name1 -Type $Type1 -Value $Value1 | Out-Null }
+
+ELSE {
+
+   Set-ItemProperty -Path $Path1 -Name $Name1 -Type $Type1 -Value $Value1 | Out-Null }
