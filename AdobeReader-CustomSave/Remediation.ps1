@@ -18,4 +18,14 @@ $Name = "bToggleCustomSaveExperience"
 $Type = "DWORD"
 $Value = "1"
 
-Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value
+IF(!(Test-Path $Path))
+
+{
+
+New-Item -Path $Path -Force | Out-Null
+
+Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value | Out-Null }
+
+ELSE {
+
+Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value | Out-Null }
