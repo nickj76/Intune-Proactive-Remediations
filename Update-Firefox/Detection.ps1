@@ -3,7 +3,7 @@ $Version = $Firefox.Version
 
 try {
     $ErrorActionPreference = "SilentlyContinue"
-    if ($Version -eq "93.0"){
+    if ($Version -le "93.0"){
         Write-Host "Firefox does not need updating."
         exit 0
     }

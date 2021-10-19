@@ -3,7 +3,7 @@ $Version = $Chrome.Version
 
 try {
     $ErrorActionPreference = "SilentlyContinue"
-    if ($Version -eq "94.0.4606.81"){
+    if ($Version -le "94.0.4606.81"){
         Write-Host "Chrome does not need updating"
         exit 0
     }
