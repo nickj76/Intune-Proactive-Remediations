@@ -1,1 +1,1 @@
-Proactive Remediation Scripts I use or may use in the environments I support.
+Proactive Remediation Scripts I use or may use within Intune.
