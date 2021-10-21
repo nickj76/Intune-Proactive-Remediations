@@ -19,7 +19,7 @@
 
 #>
 $Path = "HKLM:\Software\!ProactiveRemediations"
-$Name = "20H2NotificationSchTaskCreated"
+$Name = "Testmessagetoast"
 $Value = 1
 
 $TargetDate = (Get-Date -Day 10 -Month 09 -Year 2021).ToString("ddMMyyy")
