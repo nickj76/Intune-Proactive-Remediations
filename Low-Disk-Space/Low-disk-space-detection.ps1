@@ -20,9 +20,6 @@
     1.0.1 -   Add Synopsis, Description, Paramenter, notes, and set minimum percentage of free space.
     1.0   -   Script created
 
-.LINK
-    https://morethanpatches.com/
-    https://poweronplatforms.com
 #>
 
 $os = Get-CimInstance Win32_OperatingSystem
