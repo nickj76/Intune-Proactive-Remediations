@@ -1,11 +1,11 @@
-﻿$Get_Manufacturer_Info = (gwmi win32_computersystem).Manufacturer
+﻿$Get_Manufacturer_Info = (Get-WmiObject win32_computersystem).Manufacturer
 If($Get_Manufacturer_Info -like "*HP*")
 	{
 		$IsPasswordSet = Get-WmiObject -Namespace root/hp/InstrumentedBIOS -Class HP_BIOSSetting | Where-Object Name -eq ("Setup Password").IsSet
 	} 
 ElseIf($Get_Manufacturer_Info -like "*Lenovo*")
 	{
-		$IsPasswordSet = (gwmi -Class Lenovo_BiosPasswordSettings -Namespace root\wmi -ComputerName $computer).PasswordState
+		$IsPasswordSet = (Get-WmiObject -Class Lenovo_BiosPasswordSettings -Namespace root\wmi -ComputerName $computer).PasswordState
 	} 
 ElseIf($Get_Manufacturer_Info -like "*Dell*")
 	{
