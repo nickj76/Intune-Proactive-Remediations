@@ -34,12 +34,14 @@ Param
 #region ToastCustomisation
 
 #Create Toast Variables
-$HeaderText = "Device Health Issue Detected."
-$CustomHello = "Warning: Disk Health Issue Detected."
-$ToastTitle = "Please note that your hard drive is currently operating outside of healthy parameters. Please contact the IT Service Desk to arrange a replacement."
-$Signature = "IT Services, University of Surrey."
+$HeaderText = "Device health issue detected."
+$CustomHello = "Warning: Disk health issue detected."
+$ToastTitle = "An issue has been detected with your hard drive. Please contact the IT Service Desk to arrange a replacement."
+$Signature = "Sent by the IT Service Desk: $AlertTime"
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"
+
+$AlertTime = (Get-Date -Format 'dd/MM @ hh:mm tt')
 
 #ToastDuration: Short = 7s, Long = 25s
 $ToastDuration = "long"
@@ -96,8 +98,8 @@ function Display-ToastNotification
 	
 	#Set COM App ID > To bring a URL on button press to focus use a browser for the appid e.g. MSEdge
 	#$LauncherID = "Microsoft.SoftwareCenter.DesktopToasts"
-	$LauncherID = "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe"
-	#$Launcherid = "MSEdge"
+	#$LauncherID = "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe"
+	$Launcherid = "MSEdge"
 	
 	#Dont Create a Scheduled Task if the script is running in the context of the logged on user, only if SYSTEM fired the script i.e. Deployment from Intune/ConfigMgr
 	If (([System.Security.Principal.WindowsIdentity]::GetCurrent()).Name -eq "NT AUTHORITY\SYSTEM")

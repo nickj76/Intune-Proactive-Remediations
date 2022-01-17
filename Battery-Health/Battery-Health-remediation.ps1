@@ -32,12 +32,14 @@ Param
 #region ToastCustomisation
 
 #Create Toast Variables
-$HeaderText = "Device Health Issue Detected."
-$CustomHello = "Warning: Battery Replacement Required."
-$ToastTitle = "Your device battery is currently operating outside of manufacturer specifications, it is recommended that your battery is replaced as soon as possible. Please contact the IT service desk and request a battery replacement."
-$Signature = "IT Services, University of Surrey."
+$HeaderText = "Device health issue detected."
+$CustomHello = "Warning: Battery replacement required."
+$ToastTitle = "An issue has been detected with your device's battery. It is recommended that your battery is replaced as soon as possible. Please contact the IT Service Desk and request a battery replacement."
+$Signature = "Sent by the IT Service Desk: $AlertTime"
 $ButtonTitle = "IT Service Desk"
 $ButtonAction = "https://it.surrey.ac.uk/contact-us"
+
+$AlertTime = (Get-Date -Format 'dd/MM @ hh:mm tt')
 
 #ToastDuration: Short = 7s, Long = 25s
 $ToastDuration = "long"
