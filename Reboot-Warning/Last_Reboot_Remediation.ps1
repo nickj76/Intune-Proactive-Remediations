@@ -73,11 +73,11 @@ $HeroImage = "$env:TEMP\HeroPicture.png"
 [System.IO.File]::WriteAllBytes($HeroImage,$Bytes)	
 
 # Toast information
-$Title = "Your device has not rebooted since $Boot_Uptime_Days day(s)"
+$Title = "Your device has not rebooted for $Boot_Uptime_Days day(s)"
 $Message = "`nTo ensure the stability and proper functioning of your system, consider rebooting your device very soon."
-$Advice = "`nWe recommand you to restart your computer at least once a week"
+$Advice = "`nWe recommand you restart your computer at least once a week"
 $AppID = "MSEdge"
-$AppDisplayName = "IT Services"
+$AppDisplayName = "IT Services, University of Surrey"
 
 ##################################################################################################
 # 									Variables to fill
