@@ -68,7 +68,7 @@ $Picture_Base64 = "iVBORw0KGgoAAAANSUhEUgAAAWwAAAC0CAIAAAA/54EYAAAAAXNSR0IArs4c6
 # Where picture will be exported
 $HeroImage = "$env:TEMP\HeroPicture.png"
 
-# Cpnvert Base64 to png
+# Convert Base64 to png
 [byte[]]$Bytes = [convert]::FromBase64String($Picture_Base64)
 [System.IO.File]::WriteAllBytes($HeroImage,$Bytes)	
 
@@ -86,7 +86,7 @@ $AppDisplayName = "IT Services, University of Surrey"
 
 
 #**************************************************************************************************************************
-# 													TOAST NOTIF PART
+# 													TOAST NOTIFICATION PART
 #**************************************************************************************************************************
 
 $HeroImage = "$env:TEMP\HeroPicture.png"
